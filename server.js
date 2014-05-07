@@ -10,9 +10,9 @@ http.createServer( function (request, response) {
 */
 
 function start(route, handle) {
+
 	function onRequest (request, response) {
-		
-		var postData = '';
+
 		var pathName = url.parse(request.url).pathname;
 			
 		if ( pathName === '/favicon.ico' ) {
@@ -20,9 +20,11 @@ function start(route, handle) {
 		}
 		
 		console.log('Request for ' + pathName + ' received');
-		
+
+		/*
 		request.setEncoding("utf8");
 
+		var postData = '';
 		request.addListener( 'data', function(postDataChunk) {
 			postData += postDataChunk;
 			console.log('Received POST data chunk "' +
@@ -32,12 +34,15 @@ function start(route, handle) {
 		request.addListener('end', function() {
 			route(handle, pathName, response, postData);
 		});
+		*/
 		
 		/*
 		response.writeHead(200, {'Content-Type': 'text/plain'});
 		response.write(content);
 		response.end();
 		*/
+
+		route(handle, pathName, response, request);
 	}
 
 	http.createServer(onRequest).listen(8080);
