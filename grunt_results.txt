@@ -1,0 +1,4 @@
+[4mRunning "jshint:all" (jshint) task[24m
+[32m>> [39m4 files lint free.
+
+[32mDone, without errors.[39m
